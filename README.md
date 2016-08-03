@@ -59,17 +59,18 @@ Kullanıcı üye olduktan sonra, artık siteye girip filmlerini listesine ekleye
 
  Teslimat tarihi işlemine sonra geleceğim fakat önce bir film listesi örneği vereyim. Bu Bay X’in listesi olsun.
 
-Öncelik	 	Film Adı	                            Ekleme Tarihi
-1	 	      Star Wars IV - Yıldız Savaşları IV	  10.10.2006
-2	 	      Star Wars V - Yıldız Savaşları V	    10.10.2006
-3	 	      Star Wars VI - Yıldız Savaşları VI	  10.10.2006
-4	 	      Star Wars I - Yıldız Savaşları I    	10.10.2006
-5	 	      Star Wars II - Yıldız Savaşları II	  10.10.2006
-6	 	      Star Wars III - Yıldız Savaşları III	10.10.2006
-7	 	      Scarface - Yaralı Yüz               	04.10.2006
-8	 	      Field Of Dreams - Düşler Tarlası    	25.09.2006
-9	 	      Vizontele                           	04.10.2006
-10	    	Kurtlar Vadisi Irak                 	07.10.2006
+| Öncelik | Film Adı	                          |  Ekleme Tarihi |
+| ------- | ------------------------------------- | -------------- |
+| 1	  | Star Wars IV - Yıldız Savaşları IV	  |  10.10.2006    |
+| 2	  | Star Wars V - Yıldız Savaşları V	  |  10.10.2006    |
+| 3	  | Star Wars VI - Yıldız Savaşları VI	  |  10.10.2006    |
+| 4	  | Star Wars I - Yıldız Savaşları I      |  10.10.2006    |
+| 5	  | Star Wars II - Yıldız Savaşları II	  |  10.10.2006    |
+| 6	  | Star Wars III - Yıldız Savaşları III  |  10.10.2006    |
+| 7	  | Scarface - Yaralı Yüz                 |  04.10.2006    |
+| 8	  | Field Of Dreams - Düşler Tarlası      |  25.09.2006    |
+| 9	  | Vizontele                             |  04.10.2006    |
+| 10	  | Kurtlar Vadisi Irak                   |  07.10.2006    |
 
 
 Bu listede öncelik sırası önemli olmalıdır. Yukarıdaki listeye göre Star Wars IV, Kurtlar Vadisi Irak Filmine göre Bay X tarafından daha çok izlenilmek istenilmektedir. Müşterimiz isterse bu filmleri listeden çıkartabilir veya öncelik sırasını değiştirebilir.
@@ -79,7 +80,7 @@ Gelelim teslimat tarihi konusuna. Bay X listesini hazırladıktan sonra  “Film
 - 12.10.2006 Perşembe
 - 13.10.2006 Cuma
 - 14.10.2006 Cumartesi
-- 15.10.2006 (Pazar günü olması dolayısıyla listede yok)
+- ~~15.10.2006 (Pazar günü olması dolayısıyla listede yok)~~
 - 16.10.2006  Pazartesi
 
 Bay X bunlardan birini seçtiğinde artık sitemizle işi bitmiştir. Bay X, Teslimat Tarihinden 1 gün önceye kadar belirlediği tarihi iptal edip, yeni tarih girebilir. 
