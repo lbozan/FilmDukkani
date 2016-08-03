@@ -1,0 +1,37 @@
+@model FilmDukkaniMvc.Kategories
+
+@{
+    ViewBag.Title = "Kategori Sil";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<h3>Bu Kategoriyi Silmek İstediğinizden Eminmisiniz.?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.KategoriAdi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KategoriAdi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Tarih)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Tarih)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="(Evet) Sil" class="btn btn-default sil" /> <br /><br />
+            @Html.ActionLink("Geri Dön", "KategoriListesi")
+        </div>
+    }
+</div>
