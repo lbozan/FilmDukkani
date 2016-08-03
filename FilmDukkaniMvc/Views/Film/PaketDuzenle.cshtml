@@ -1,0 +1,74 @@
+@using System.Web.Optimization
+@model FilmDukkaniMvc.Paketler
+
+@{
+    ViewBag.Title = "Paket Düzenle";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+@section Style{
+    @Styles.Render("~/Content/bootstrap")
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true)
+        <div class="form-group">
+            @Html.LabelFor(model => model.PaketAdi, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.PaketAdi)
+                @Html.ValidationMessageFor(model => model.PaketAdi)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.PaketBilgi, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.PaketBilgi, new { cols = "45", rows = "6" })
+                @Html.ValidationMessageFor(model => model.PaketBilgi)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.PaketFiyat, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.PaketFiyat)
+                @Html.ValidationMessageFor(model => model.PaketFiyat)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.MaxFilmAdet, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.MaxFilmAdet)
+                @Html.ValidationMessageFor(model => model.MaxFilmAdet)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DegisimAdet, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.DegisimAdet)
+                @Html.ValidationMessageFor(model => model.DegisimAdet)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Güncelle" class="btn btn-default duzenle" />
+            </div>
+        </div>
+    </div>
+}
+<br />
+<div>
+    @Html.ActionLink("Geri Dön", "PaketListesi")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
