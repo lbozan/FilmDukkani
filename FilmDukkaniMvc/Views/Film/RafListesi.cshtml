@@ -1,0 +1,39 @@
+@model IEnumerable<FilmDukkaniMvc.Rafs>
+
+@{
+    ViewBag.Title = "Raf Listesi";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+ 
+<p>
+    <img src="@Url.Content("~/Content/images/Duzen.png")" alt="Düzenle" width="17" height="17" /> @Html.ActionLink("Raf Oluştur", "RafEkle")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.RafAdi)
+        </th>
+        <th>
+            Raftaki Film Sayısı
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.RafAdi)
+            </td>
+            <td>
+                @item.Films.Count()
+            </td>
+            <td>
+                @Html.ActionLink("Düzenle", "RafDuzenle", new { Id = item.ID }, new { @class="duzenle" }) |
+                @Html.ActionLink("Sil", "RafSil", new { Id = item.ID }, new { @class = "sil" })
+            </td>
+        </tr>
+    }
+
+</table>
