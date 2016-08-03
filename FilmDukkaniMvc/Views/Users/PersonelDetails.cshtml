@@ -1,0 +1,97 @@
+@model FilmDukkaniMvc.Models.PersonelModel
+
+@{
+    ViewBag.Title = "Personel Details";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+@section Style{
+    @System.Web.Optimization.Styles.Render("~/Content/bootstrap")
+}
+
+<div>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Adi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Adi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Soyadi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Soyadi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Adres)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Adres)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TelefonNo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TelefonNo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cinsiyet)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cinsiyet)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Yasi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Yasi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Eposta)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Eposta)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.PostaKod)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PostaKod)
+        </dd>
+        <dt>
+            @Html.DisplayName("İlce")
+        </dt>
+
+        <dd>
+            @ViewBag.ilce
+        </dd>
+
+    </dl>
+</div>
+<p>
+    <br />
+    @Html.ActionLink("Güncelle", "PersonelDuzenle", new { Id = Model.ID }, new { @class = "duzenle" }) <br /><br />
+
+    @Html.Partial("~/Views/PartialViews/_GeriDonView.cshtml", "PersonelListesi")
+</p>
