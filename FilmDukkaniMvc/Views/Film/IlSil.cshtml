@@ -1,0 +1,19 @@
+@model FilmDukkaniMvc.Ilceler
+
+@{
+    ViewBag.Title = "İl Sil";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h3>@ViewBag.ilAdi Silmek İstediğinizden Eminmisiniz.?(İl Bağlı ilcelerde Silinecektir.!) </h3>
+<div>
+    
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="(Evet) Sil" class="btn btn-default sil" />
+        </div>
+    }
+    <br /><br />@Html.ActionLink("Geri Gön", "IlListesi")
+</div>
