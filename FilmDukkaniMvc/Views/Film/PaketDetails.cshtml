@@ -1,0 +1,64 @@
+@using FilmDukkaniMvc.Helpers
+@model FilmDukkaniMvc.Paketler
+
+@{
+    ViewBag.Title = "Paket Detayları";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+@section Style{
+    @System.Web.Optimization.Styles.Render("~/Content/bootstrap")
+}
+<div>
+	<hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.PaketAdi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PaketAdi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PaketBilgi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PaketBilgi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PaketFiyat)
+        </dt>
+
+        <dd>
+           @Html.ParaBirim(@Model.PaketFiyat)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.MaxFilmAdet)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MaxFilmAdet)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DegisimAdet)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DegisimAdet)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Tarih)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tarih)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Düzenle", "PaketDuzenle", new { Id = Model.ID }, new { @class="duzenle" }) 
+    <br /><br />@Html.ActionLink("Geri Dön", "PaketListesi")
+</p>
