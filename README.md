@@ -32,7 +32,9 @@ Sitenin işleyişinden tamamen ben sorumluyum. Namık Bey’in anlattıklarını
 Öncelikle sitemize üye olmak isteyen bir kişi hangi üyelik paketini seçmek istediğini belirtir. Sistemimizdeki üyelik paketlerimiz şunlardır:
 
 Üyelik Modeli --- Değişim   ------------ Aylık Yaklaşık Film Sayısı -- Aylık Ücret
+
 Ekonomik Paket -- Bir değişimde 2 Film - 16 Film  -------------------- 19,90 YTL
+
 3'lü Paket ------ Bir değişimde 3 Film - 24 Film  -------------------- 29,9 YTL
 4'lüPaket ------- Bir değişimde 4 Film - 32 Film	                    39,9 YTL
 Gold Paket ------ Bir değişimde 5 Film - 40 Film	                    49,9 YTL
