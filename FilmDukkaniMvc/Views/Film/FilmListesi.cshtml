@@ -1,0 +1,58 @@
+@model IEnumerable<FilmDukkaniMvc.Films>
+
+@{
+    ViewBag.Title = "Film Listesi";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<p>
+    <img src="@Url.Content("~/Content/images/Duzen.png")" alt="Düzenle" width="17" height="17" /> @Html.ActionLink("Film Ekle", "FilmEkle")
+</p>
+<table>
+    <tbody>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.BarkodNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FilmAdi)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.YabanciAdi)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Sure)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ImdbPuan)
+            </th>
+            <th></th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BarkodNo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FilmAdi)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.YabanciAdi)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Sure)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ImdbPuan)
+                </td>
+                <td>
+                    @Html.ActionLink("Güncelle", "FilmDuzenle", new { Id = item.ID }, new { @class = "duzenle" }) |
+                    @Html.ActionLink("Detaylar", "FilmDetails", new { Id = item.ID }, new { @class = "ekle" }) |
+                    @Html.ActionLink("Sil", "FilmSil", new { Id = item.ID }, new { @class = "sil" })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
