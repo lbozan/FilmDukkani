@@ -1,0 +1,28 @@
+@model IEnumerable<FilmDukkaniMvc.MusteriFilmYorums>
+
+@{
+    ViewBag.Title = "Film Yorumlari";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+
+}
+<div id="blog">
+    <div class="comments">
+        <h4 class="heading"></h4>
+        <ul class="comment-list">
+            @foreach (MusteriFilmYorums item in Model)
+            {
+                <li class="clearfix">
+                    <div class="comment-detail">
+                        <h4><a href="#">@item.Musteriler.Adi @item.Musteriler.Soyadi</a> /@item.KayitTarihi <span></span></h4>
+                        <p>@item.Yorum</p>
+                        @Html.ActionLink("Sil", "FilmYorumlariSil", new { Id = @ViewBag.filmId, yId = @item.ID }, new { @class = "reply" })
+                        @if (item.Aktifmi == false)
+                        {
+                            @Html.ActionLink("Aktif Yap", "FilmYorumlariAktifYap", new { Id = @ViewBag.filmId, yId = item.ID }, new { @class = "reply" })
+                        }
+                    </div><!-- end of .author detail -->
+                </li>
+            }
+        </ul><!-- end of .comment-list -->
+    </div><!-- end of .comments -->
+</div>
