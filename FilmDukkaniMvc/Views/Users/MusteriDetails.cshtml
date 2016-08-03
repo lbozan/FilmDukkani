@@ -1,0 +1,250 @@
+@model FilmDukkaniMvc.Musteriler
+
+@{
+    ViewBag.Title = "Musteri Details";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+@section Style{
+    @System.Web.Optimization.Styles.Render("~/Content/bootstrap")
+}
+<div>
+    <fieldset>
+        <legend>Giriş Bilgiler</legend>
+
+        <dl class="dl-horizontal">
+            @if (HttpContext.Current.User.IsInRole("Admin"))
+            {
+                <dt>
+                    @Html.DisplayName("Kullanırlık Durumu ")
+                </dt>
+
+                <dd>
+                    @if (Model.Users.Aktifmi == true)
+                    {
+                        <span style="color:green">Aktif - </span>  @Html.ActionLink("DeAktif", "MusteriAktif", new { Id = Model.UserID, durum = false })
+                    }
+                    else
+                    {
+                        <span style="color:red">Pasif - </span> @Html.ActionLink("DeAktif", "MusteriAktif", new { Id = Model.UserID, durum = true })
+                    }
+                </dd>
+            }
+            <dt>
+                @Html.DisplayNameFor(model => model.Users.UserName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Users.UserName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Users.Password)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Users.Password)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.DigerBilgiler.Eposta)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.DigerBilgiler.Eposta)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.DigerBilgiler.TelefonNo)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.DigerBilgiler.TelefonNo)
+            </dd>
+
+        </dl>
+    </fieldset>
+    <fieldset>
+        <legend>Diğer Bilgiler</legend>
+        <dl class="dl-horizontal">
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Adi)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Adi)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Soyadi)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Soyadi)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.DigerBilgiler.Cinsiyet)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.DigerBilgiler.Cinsiyet)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.DigerBilgiler.Yasi)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.DigerBilgiler.Yasi)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.DigerBilgiler.Adres)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.DigerBilgiler.Adres)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.DigerBilgiler.PostaKod)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.DigerBilgiler.PostaKod)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.DigerBilgiler.Ilceler.Iller.IlAdi)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.DigerBilgiler.Ilceler.Iller.IlAdi)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.DigerBilgiler.Ilceler.IlceAdi)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.DigerBilgiler.Ilceler.IlceAdi)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Tarih)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Tarih)
+            </dd>
+
+        </dl>
+    </fieldset>
+    <fieldset>
+        <legend>Kredi Kart Bilgileri</legend>
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.TCNo)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.TCNo)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.KrediKartBilgileri.KrediKartNo)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.KrediKartBilgileri.KrediKartNo)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.KrediKartBilgileri.KrediKartSKT)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.KrediKartBilgileri.KrediKartSKT)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.KrediKartBilgileri.KrediKartCNRNo)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.KrediKartBilgileri.KrediKartCNRNo)
+            </dd>
+        </dl>
+    </fieldset>
+    <fieldset>
+        <legend>Paket </legend>
+        <dl class="dl-horizontal">
+
+            <dt>
+                @Html.DisplayName("İstenilen Filmler")
+            </dt>
+
+            <dd>
+                @Html.ActionLink("Göster", "MusteriFilmListesi", new { Id = Model.ID, durum = false })
+            </dd>
+            <dt>
+                @Html.DisplayName("Gönderilen Filmler")
+            </dt>
+
+            <dd>
+                @Html.ActionLink("Göster", "MusteriFilmListesi", new { Id = Model.ID, durum = true })
+            </dd>
+            <dt><br /> </dt>
+            <dd></dd>
+            @if (User.IsInRole("Personel"))
+            {
+                <dt>
+                    @Html.DisplayName("Toplam Kesilen Para")
+                </dt>
+
+                <dd>
+                    @if (Model.AylikParaKesimRelation.Count > 0)
+                    {
+                        @Html.DisplayFor(model => model.AylikParaKesimRelation.Sum(x => x.KesilenPara)) <span>TL.</span>
+                    }
+                    else
+                    {
+                        <span style="color:red">0 TL.</span>
+                    }
+                </dd>
+            }
+            <dt>
+                @Html.DisplayNameFor(model => model.Paketler.PaketAdi)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Paketler.PaketAdi)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Paketler.MaxFilmAdet)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Paketler.MaxFilmAdet)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Paketler.DegisimAdet)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Paketler.DegisimAdet)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Paketler.PaketBilgi)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Paketler.PaketBilgi)
+            </dd>
+        </dl>
+    </fieldset>
+</div>
+<p>
+    @Html.ActionLink("Güncelle", "MusteriDuzenle", new { Id = Model.ID }, new { @class = "duzenle" }) <br /><br />
+
+    @if (HttpContext.Current.User.IsInRole("Personel"))
+    {
+        @Html.ActionLink("Geri Dön", "MusteriListesi")
+    }
+
+</p>
