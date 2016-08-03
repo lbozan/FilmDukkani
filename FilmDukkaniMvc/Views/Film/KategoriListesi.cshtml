@@ -1,0 +1,31 @@
+@model IEnumerable<FilmDukkaniMvc.Kategories>
+@{
+    ViewBag.Title = "Kategori Listesi";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<p>
+    <img src="@Url.Content("~/Content/images/Duzen.png")" alt="Düzenle" width="17" height="17" /> @Html.ActionLink("Kategori Ekle", "KategoriEkle")<br />
+</p>
+<table>
+    <tbody>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.KategoriAdi)
+            </th>
+            <th></th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.KategoriAdi)
+                </td>
+                <td>
+                    @Html.ActionLink("Güncelle", "KategoriDuzenle", new { Id = item.ID }, new { @class = "duzenle" }) |
+                    @Html.ActionLink("Sil", "KategoriSil", new { Id = item.ID }, new { @class = "sil" })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
