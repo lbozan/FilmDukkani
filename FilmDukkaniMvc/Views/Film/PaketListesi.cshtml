@@ -1,0 +1,59 @@
+@model IEnumerable<FilmDukkaniMvc.Paketler>
+@using FilmDukkaniMvc.Helpers
+@{
+    ViewBag.Title = "Paket Listesi";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<p>
+    <img src="@Url.Content("~/Content/images/Duzen.png")" alt="Düzenle" width="17" height="17" /> @Html.ActionLink("Paket Ekle", "PaketEkle")
+</p>
+<table>
+    <tbody>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.PaketAdi)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PaketBilgi)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PaketFiyat)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MaxFilmAdet)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DegisimAdet)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PaketAdi)
+                </td>
+                <td>
+                    @Html.Kisalt(item.PaketBilgi, 15)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PaketFiyat)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MaxFilmAdet)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DegisimAdet)
+                </td>
+                <td>
+                    @Html.ActionLink("Detaylar", "PaketDetails", new { Id = item.ID }, new { @class = "ekle" }) |
+                    @Html.ActionLink("Güncelle", "PaketDuzenle", new { Id = item.ID }, new { @class = "duzenle" }) |
+                    @Html.ActionLink("Sil", "PaketSil", new { Id = item.ID }, new { @class = "sil" })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
