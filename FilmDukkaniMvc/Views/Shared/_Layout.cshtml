@@ -1,0 +1,65 @@
+@using System.Web.Optimization
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>Film Kiralama Dükkanı</title>
+    @Styles.Render("~/Content/css")
+    @RenderSection("RootStyle", required: false)
+
+    <link rel="shortcut icon" href="favicon.ico" />
+</head>
+<!--[if lt IE 7 ]> <body class="ie6"> <![endif]-->
+<!--[if IE 7 ]>    <body class="ie7"> <![endif]-->
+<!--[if IE 8 ]>    <body class="ie8"> <![endif]-->
+<!--[if IE 9 ]>    <body class="ie9"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!-->
+<body>
+    <div class="header-wrapper">
+        <div id="header" class="clearfix">
+            <a href="@Url.Action("Index","Home")" class="logo"><img src="@Url.Content("~/Content/images/logo.png")" alt="Film Dükkanı" /> </a>
+            <strong class="slogan">Online Film Kiralama</strong>
+            @if (HttpContext.Current.User.Identity.IsAuthenticated)
+            {
+                <ul class="top-nav">
+
+
+                    @if (HttpContext.Current.User.IsInRole("Personel"))
+                    {
+                        <li><a href="@Url.Action("Index","Users")">Panels</a></li>
+                        <li><a href="@Url.Action("PersonelDetails", "Users", new { Id =0 ,username=HttpContext.Current.User.Identity.Name })">Hesabım</a></li>
+                    }
+                    else
+                    {
+                        <li><a href="@Url.Action("Index", "Home")">Ana Sayfa </a></li>
+                        <li><a href="@Url.Action("FilmListem", "Users", new { user = User.Identity.Name })">Film Listem </a></li>
+                        <li><a href="@Url.Action("MusteriDetails", "Users", new { Id =0 ,username=HttpContext.Current.User.Identity.Name })">Hesabım</a></li>
+                    }
+
+                    @*<li><a href="shopping-cart.html"></a></li>*@
+                    <li>
+                        <a href="@Url.Action("Cikis","Home")">
+                            Oturumu Kapat &nbsp;<img src="@Url.Content("~/Content/images/icon-3.png")" width="14" height="14" alt=" =" />
+                        </a>
+                    </li>
+
+
+                </ul>
+            }
+        </div>
+    </div>
+
+    @RenderBody()
+
+    <div class="copyright-wrapper">
+        <div id="copyrights" class="clearfix">
+            <p class="left">copyright of <a href="#">LBozan</a>   All Rights Reserved</p>
+            <p class="right">Designed by and Developed by <a href="http://lbozan.blogspot.com.tr/">LBozan</a></p>
+        </div>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @RenderSection("RootScripts", required: false)
+</body>
+</html>
