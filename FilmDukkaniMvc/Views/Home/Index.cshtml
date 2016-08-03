@@ -1,0 +1,50 @@
+@{
+    ViewBag.Title = "Tüm Filmler";
+    Layout = "~/Views/Shared/_HomeLayout.cshtml";
+    List<Kategories> kategoriListesi = ViewBag.kategoriListesi;
+    List<Films> filmListesi = ViewBag.filmListesi;
+
+}
+
+<p id="breadcrumbs">
+    <a href="#">Ana Sayfa</a>
+    <span class="active">@ViewBag.Title</span>
+</p>
+
+<div class="inner-container clearfix">
+    <div id="all-product">
+
+        <h3>
+            <span>Tüm Filmler</span>
+
+        </h3>
+
+        <ul class="clearfix list-view">
+            @foreach (Films item in filmListesi)
+            {
+                if (!item.MusteriFilmListesi.Any(x => x.Musteriler.Users.UserName == User.Identity.Name && x.FilmlerID == item.ID && x.Alindimi == true))
+                {
+                    <li class="product">
+                        <a href="@Url.Action("FilmDetails", new { Id = item.ID })" class="thumb"><img src="@Url.Content("~/Afis/"+item.AfisPath)" alt=" " /></a>
+                        <div class="data">
+                            <a href="@Url.Action("FilmDetails", new { Id = item.ID })" class="title">@item.FilmAdi</a>
+                            <p>@item.Aciklama</p>
+                            <div class="clearfix info">
+                                @if (User.Identity.IsAuthenticated)
+                                {
+                                    <a href="@Url.Action("MusteriFilmEkle", "Users", new { user = User.Identity.Name, fId = item.ID })" class="add-to-cart">Listeye Ekle</a>
+                                }
+                                <span class="price-text">Imdb <span>@item.ImdbPuan</span></span>
+                            </div>
+                        </div>
+                    </li>
+                }
+            }
+
+        </ul>
+    </div>
+
+    @Html.Partial("~/Views/PartialViews/SagKategoriViews.cshtml", kategoriListesi)
+</div>
+
+@*@Html.Partial("~/Views/PartialViews/SayfalamaNumaraViews.cshtml")*@
