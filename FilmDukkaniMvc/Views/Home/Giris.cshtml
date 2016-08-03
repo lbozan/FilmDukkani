@@ -1,0 +1,32 @@
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_HomeLayout.cshtml";
+}
+
+
+<p id="breadcrumbs">
+    <a href="#">Home</a>
+    <a href="#">Hesap</a>
+    <span class="active">Giriş</span>
+</p>
+
+<div class="clearfix">
+    <div class="new-customer">
+        <h3><span>Yeni Üyelik</span></h3>
+        <p><a href="#" class="reg">Hesap Kaydı</a></p>
+        <p class="msg">yeni kayıt falan filan yazısı</p>
+        <a class="cont" href="@Url.Action("MusteriEkle")">Kaydol</a>
+    </div>
+    <div class="login">
+        <h3><span>Üye Girişi</span></h3>
+        <p></p>
+        <form class="login-form" method="post" action="@Url.Action("Giris")">
+            <fieldset>
+                <input type="text" id="email" name="username" value="Kullanıcı Adı">
+                <input type="password" id="pw" name="password" value="Parola">
+                <p><a href="@Url.Action("SifreHatirla","Home")">Parolamı Unutum.</a></p>
+                <input class="login-btn" type="submit" value="Giriş Yap">
+            </fieldset>
+        </form>
+    </div>
+</div>
