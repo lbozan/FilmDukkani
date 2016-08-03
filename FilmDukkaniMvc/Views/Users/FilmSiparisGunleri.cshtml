@@ -1,0 +1,33 @@
+@model IEnumerable<FilmDukkaniMvc.SiparisTarihleri>
+
+@{
+    ViewBag.Title = "Film Siparis Günleri";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+
+<p >
+    <img src="@Url.Content("~/Content/images/ekle.png")" alt="Ekle" width="17" height="17"/>&nbsp; @Html.ActionLink("Yeni Gün Ekle", "FilmSiparisGunEkle")<br /><br /><br />
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.SiparisTarih)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.SiparisTarih)
+            </td>
+            <td>
+                <a href="@Url.Action("FilmSiparisGunSil", new { Id = item.ID })"><img src="@Url.Content("~/Content/images/sil.png")" alt="Çıkar" width="17" height="17" /></a>
+            </td>
+        </tr>
+    }
+
+</table>
