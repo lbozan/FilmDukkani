@@ -1,0 +1,54 @@
+@model IEnumerable<FilmDukkaniMvc.MusteriFilmListesi>
+
+@{
+    ViewBag.Title = "Film Listesi";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<span style="font-size:large">@(ViewBag.Baslik ? "Gönderilen" : "Sıradaki") Filmler</span>
+<table class="table">
+    <tbody>
+        <tr>
+            <th>
+                @Html.DisplayName("Film Adı")
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IstenilenTarih)
+            </th>
+            <th>
+                @Html.DisplayName("Durum")
+            </th>
+
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Films.FilmAdi)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IstenilenTarih)
+                </td>
+                <td>
+                    @if (User.IsInRole("Personel"))
+                    {
+                        if (ViewBag.Baslik)
+                        {
+                            @Html.ActionLink("Dvd Alındı.", "MusteriFilmDurum", new { fId = item.ID, durum = true }, new { @class = "duzenle" })
+                        }
+                        else
+                        {
+                            @Html.ActionLink("Siparişi Gönder.", "MusteriFilmDurum", new { fId = item.ID, durum = false }, new { @class = "duzenle" })
+                        }
+                    }
+                    else
+                    {
+                        @(ViewBag.Baslik ? "Gönderilen" : "Sıradaki")
+                    }
+                </td>
+                <td></td>
+            </tr>
+        }
+    </tbody>
+</table>
