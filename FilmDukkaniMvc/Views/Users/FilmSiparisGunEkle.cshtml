@@ -1,0 +1,47 @@
+@using System.Web.Optimization
+@model FilmDukkaniMvc.SiparisTarihleri
+
+@{
+    ViewBag.Title = "Film Ekle";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <h4>En az  Bu Günden 2 Gün Sonrası Tarih Verilerbilir.(@DateTime.Now.Day .@DateTime.Now.Month .@DateTime.Now.Year)</h4>
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.SiparisTarih, new { @class = "control-label col-md-2", @style = "width:50px;" })
+            <div class="col-md-10">
+                <br />
+                @Html.EditorFor(model => model.SiparisTarih)
+                @Html.ValidationMessageFor(model => model.SiparisTarih)
+            </div>
+        </div>
+        @Html.HiddenFor(model => model.MusteriID)
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <br />
+                <input type="submit" value="Listeye Ekle" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    <hr />
+    @Html.ActionLink("Geri Dön", "FilmSiparisGunleri", "Users")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+
+
+
