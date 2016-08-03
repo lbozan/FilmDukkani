@@ -1,0 +1,39 @@
+@model FilmDukkaniMvc.Films
+
+@{
+    ViewBag.Title = "Film Sil";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<h3>Bu Filmi Silmek İstediğinizden Eminmisiniz.?</h3>
+<div>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.FilmAdi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FilmAdi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.YabanciAdi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.YabanciAdi)
+        </dd>
+
+    </dl>
+    <br />
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="(Evet) Sil" class="btn btn-default sil" /> <br /><br />
+            @Html.ActionLink("Geri Dön", "FilmListesi", new { @Model.ID })
+        </div>
+    }
+</div>
