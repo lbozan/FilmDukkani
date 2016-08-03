@@ -1,0 +1,125 @@
+@model FilmDukkaniMvc.Films
+
+@{
+    ViewBag.Title = "Film Details";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    string afisPath = "/Afis/" + Model.AfisPath;
+}
+@section Style{
+    @System.Web.Optimization.Styles.Render("~/Content/bootstrap")
+}
+<div id="product" class="clearfix">
+    <div class="product-gallery">
+        <div class="large-image">
+            <div id="wrap" style="top:0px;z-index:9999;position:relative;">
+
+                <img src="@afisPath" alt="" style="display: block;">
+
+                </a>
+            </div>
+        </div>
+
+        @Html.ActionLink("Afiş Güncelle", "AfisEkle", new { Id = Model.ID })<br /><br />
+        <p class="duzenle">@Model.MusteriFilmBegens.Where(x => x.Begenilen == true).Count() Begenildi</p>
+        <p class="duzenle">@Model.MusteriFilmBegens.Where(x => x.Begenilen == false).Count() Begenilmedi</p>
+        <p class="duzenle">Toplam Yorum : @Model.MusteriFilmYorums.Sum(x => x.ID) - @Html.ActionLink("Göster", "FilmYorumlari", new { Id = Model.ID }, new { @class = "ekle" }) </p>
+    </div><!-- end of .product-gallery -->
+
+    <div class="product-detail">
+
+        <h2><a href="#">@Model.FilmAdi (@Model.YabanciAdi)</a></h2>
+        <cite>Raf Yeri : @Model.Rafs.RafAdi</cite>
+        <p>Barkod Kod: @Model.BarkodNo</p>
+        <p>Süre : @Model.Sure.ToString(@"hh\:mm")</p>
+        <p>Yapım Tarihi : @Model.YapimTarihi.ToString("dd/MM/yyyy")</p>
+        <p>Imdb:<span>@Model.ImdbPuan</span></p>
+        <p class="price">Fiyat: @Model.Fiyat</p>
+        <p class="tax">Stok : @Model.Stok</p>
+
+        <p class="price">Özellikler</p>
+        @if (Model.UcBoyutlumu == true)
+        {
+            <p class="tax">3D</p>
+        }
+        @if (Model.EditorSectiMi == true)
+        {
+            <p class="tax">Editör Seçimi</p>
+        }
+        @if (Model.YeniFilmMi == true)
+        {
+            <p class="tax">Yeni Film</p>
+        }
+
+        <p class="add-links">
+        <p class="duzenle">Kategori - @Html.ActionLink("Ekle", "FilmKategoriEkle", new { Id = Model.ID })</p>
+
+        @if (Model.Kategories.Count > 0)
+        {
+            foreach (var item in Model.Kategories)
+            {
+                <p class="tax">@item.KategoriAdi - @Html.ActionLink("Sil", "FilmKategoriSil", new { Id = Model.ID, kId = item.ID }, new { @class = "sil" })</p>
+            }
+        }
+        <p class="duzenle">Yönetmen - @Html.ActionLink("Ekle", "FilmYonetmenEkle", new { Id = Model.ID })</p>
+        @if (Model.Yonetmens.Count > 0)
+        {
+            foreach (var item in Model.Yonetmens)
+            {
+                <p class="tax">@item.Adi  @item.Soyadi - @Html.ActionLink("Sil", "FilmYonetmenSil", new { Id = Model.ID, yId = item.ID }, new { @class = "sil" })</p>
+            }
+        }
+        <p class="duzenle">Baş Rol Oyuncu  - @Html.ActionLink("Ekle", "FilmOyuncuEkle", new { Id = Model.ID })</p>
+        @if (Model.FilmOyuncuRelation.Where(x => x.BasrolMi == true).Count() > 0)
+        {
+            foreach (var item in Model.FilmOyuncuRelation.Where(x => x.BasrolMi == true))
+            {
+                <p class="tax">@item.Oyuncular.Adi  @item.Oyuncular.Soyadi - @Html.ActionLink("Sil", "FilmOyuncuSil", new { Id = Model.ID, oId = item.OyuncuID }, new { @class = "sil" })</p>
+            }
+        }
+        <p class="duzenle">Oyuncu - @Html.ActionLink("Ekle", "FilmOyuncuEkle", new { Id = Model.ID })</p>
+        @if (Model.FilmOyuncuRelation.Where(x => x.BasrolMi == false).Count() > 0)
+        {
+            foreach (var item in Model.FilmOyuncuRelation.Where(x => x.BasrolMi == false))
+            {
+                <p class="tax">@item.Oyuncular.Adi  @item.Oyuncular.Soyadi - @Html.ActionLink("Sil", "FilmOyuncuSil", new { Id = Model.ID, oId = item.OyuncuID }, new { @class = "sil" })</p>
+            }
+        }
+        <p class="duzenle">Aldığı Ödül - @Html.ActionLink("Ekle", "FilmOdulEkle", new { Id = Model.ID })</p>
+        @if (Model.FilmOdulRelation.Where(x => x.FilmID == Model.ID && x.AldiMi == true).Count() > 0)
+        {
+            foreach (var item in Model.FilmOdulRelation.Where(x => x.FilmID == Model.ID && x.AldiMi == true))
+            {
+                <p class="tax">@item.Oduls.OdulAdi - @Html.ActionLink("Sil", "FilmOdulSil", new { Id = Model.ID, oId = item.OdulID }, new { @class = "sil" })</p>
+            }
+        }
+        <p class="duzenle">Aday Gösterilen Ödül - @Html.ActionLink("Ekle", "FilmOdulEkle", new { Id = Model.ID })</p>
+        @if (Model.FilmOdulRelation.Where(x => x.FilmID == Model.ID && x.AldiMi == false).Count() > 0)
+        {
+            foreach (var item in Model.FilmOdulRelation.Where(x => x.FilmID == Model.ID && x.AldiMi == false))
+            {
+                <p class="tax">@item.Oduls.OdulAdi - @Html.ActionLink("Sil", "FilmOdulSil", new { Id = Model.ID, oId = item.OdulID }, new { @class = "sil" })</p>
+            }
+        }
+        <p class="duzenle">Alt Yazısı - @Html.ActionLink("İşlemleri", "FilmAltYaziEkle", new { Id = Model.ID })</p>
+        @if (Model.AltYazilar.Count > 0)
+        {
+            foreach (var item in Model.AltYazilar)
+            {
+                <p class="tax">@item.DilAdi - @Html.ActionLink("Sil", "FilmAltYaziSil", new { Id = Model.ID, aId = item.ID }, new { @class = "sil" })</p>
+            }
+        }
+
+        </p>
+        <p class="add-links">
+            <a href="#">Ek Bilgi : @Model.Aciklama</a>
+
+        </p>
+        <p>
+            @Html.ActionLink("Güncelle", "FilmDuzenle", new { Id = Model.ID }, new { @class = "duzenle" })
+            @Html.ActionLink("Geri Dön", "FilmListesi")
+        </p>
+
+    </div><!-- end of .product-detail -->
+    <p></p>
+
+</div>
