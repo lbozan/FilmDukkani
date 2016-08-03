@@ -1,0 +1,42 @@
+@model IEnumerable<FilmDukkaniMvc.Iller>
+
+@{
+    ViewBag.Title = "İl Listesi";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+
+<p>
+    <img src="@Url.Content("~/Content/images/Duzen.png")" alt="Düzenle" width="17" height="17" />  @Html.ActionLink("Yeni İL Ekle", "IlEkle")
+</p><br />
+<table>
+    <tbody>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.IlAdi)
+            </th>
+            <th>
+                İlce Sayısı
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IlAdi)
+                </td>
+                <td>
+                    @item.Ilceler.Count()
+                </td>
+                <td>
+                    @Html.ActionLink("İlce Listesi", "IlceListesi", new { IlId = item.ID }, new { @class = "ekle" }) |
+                    @Html.ActionLink("Düzenle", "IlDuzenle", new { Id = item.ID }, new { @class = "duzenle" }) |
+                    @Html.ActionLink("Sil", "IlSil", new { Id = item.ID, Name = item.IlAdi }, new { @class = "sil" })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
