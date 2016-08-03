@@ -1,0 +1,11 @@
+@model IEnumerable<Kategories>
+<div id="sidebar">
+    <h3><span>Kategoriler</span></h3>
+    <ul>
+        <li><a href="@Url.Action("Index", new { Id="" })">Hepsi</a></li>
+        @foreach (Kategories item in Model)
+        {
+            <li><a href="@Url.Action("Index", new { Id = @item.ID })">@item.KategoriAdi</a></li>
+        }
+    </ul>
+</div>
