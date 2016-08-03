@@ -1,0 +1,25 @@
+@{
+    ViewBag.Title = "Şifremi Unutum";
+    Layout = "~/Views/Shared/_HomeLayout.cshtml";
+}
+
+
+@using (Html.BeginForm())
+{
+    <br /><br />
+    <div class="form-group">
+        @Html.Label("E-Postanız") <hr />
+        <div class="col-md-10">
+            <input type="text" name="eposta" />
+            @Html.ValidationMessage("eposta")
+        </div>
+    </div>
+    <div class="form-horizontal">
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Üye Ol" class="btn btn-default ekle" />
+            </div>
+        </div>
+    </div>
+    <br /><br />
+}
