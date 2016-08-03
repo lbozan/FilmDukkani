@@ -1,0 +1,111 @@
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section RootStyle{
+    @RenderSection("Style", required: false)
+}
+<div class="navigation-wrapper">
+    <!-- Üst menu -->
+    <ul id="navigation" class="clearfix">
+
+
+        @if (HttpContext.Current.User.IsInRole("Personel"))
+        {
+            <li><a href="@Url.Action("Index","Film")"><img src="@Url.Content("~/Content/images/home.png")" alt="" />Ana Sayfa</a></li>
+            if (HttpContext.Current.User.IsInRole("Admin"))
+            {
+
+                <li>
+                    <a href="#">Aylık Faturalar</a>
+                    <ul>
+                        <li><a href="@Url.Action("FaturalariKes", "Users")">Tüm Faturalar</a></li>
+
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">Personel Panels</a>
+                    <ul>
+                        <li><a href="@Url.Action("PersonelListesi","Users")">Personel Listesi</a></li>
+                        <li><a href="@Url.Action("PersonelEkle","Users")">Personel Ekle</a></li>
+                    </ul>
+                </li>
+            }
+            <li>
+                <a href="#">Müşteri Panels</a>
+                <ul>
+                    <li><a href="@Url.Action("MusteriListesi","Users")">Müşteri Listesi</a></li>
+                    <li><a href="@Url.Action("MusteriEkle","Users")">Müşteri Ekle</a></li>
+                    <li><a href="@Url.Action("SiparisleriHazirla", "Film")">Siparişleri Hazırla</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">Filmler</a>
+                <ul>
+                    <li><a href="@Url.Action("FilmListesi", "Film")">Film Listesi</a></li>
+                    <li><a href="@Url.Action("FilmEkle", "Film")">Film Ekle</a></li>
+                    <li><a href="@Url.Action("KategoriListesi", "Film")">Kategori Panels</a></li>
+                    <li><a href="@Url.Action("BozukFilmListesi", "Film")">Bozuk Film Panels</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">Yönetmenler</a>
+                <ul>
+                    <li><a href="@Url.Action("YonetmenListesi","Film")">Yönetmen Listesi</a></li>
+                    <li><a href="@Url.Action("YonetmenEkle","Film")">Yönetmen Ekle</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">Oyuncu</a>
+                <ul>
+                    <li><a href="@Url.Action("OyuncuListesi","Film")">Oyuncu Listesi</a></li>
+                    <li><a href="@Url.Action("OyuncuEkle", "Film")">Oyuncu Ekle</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">Diğerleri</a>
+                <ul>
+                    <li><a href="@Url.Action("BozukFilmListesi","Film")">Bozuk Filmler</a></li>
+                    <li><a href="@Url.Action("IlListesi","Film")">İl - İlce</a></li>
+                    <li><a href="@Url.Action("RafListesi", "Film")">Raflar</a></li>
+                    <li><a href="@Url.Action("PaketListesi", "Film")">Paketler</a></li>
+                    <li><a href="@Url.Action("AltYaziListesi", "Film")">Alt Yazılar</a></li>
+                    <li><a href="@Url.Action("OdulListesi", "Film")">Ödüller</a></li>
+                </ul>
+            </li>
+        }
+        else
+        {
+            <li><a href="@Url.Action("Index","Home")"><img src="@Url.Content("~/Content/images/home.png")" alt="" />Ana Sayfa</a></li>
+        }
+    </ul>
+</div>
+<div class="bottom-wrapper">
+    <div id="bottom" class="clearfix">
+        @if (!HttpContext.Current.User.Identity.IsAuthenticated)
+        {
+            <strong class="welcome-message">Hoş Geldiniz  <a href="@Url.Action("Giris")">Giriş Yapın</a> veya <a href="@Url.Action("MusteriEkle")">Üye Olun</a>.</strong>
+        }
+        else
+        {
+            <strong class="welcome-message">Hoş Geldiniz  Sayın : @HttpContext.Current.User.Identity.Name  </strong>
+        }
+
+    </div>
+</div>
+<div class="container">
+    <p id="breadcrumbs">
+        <a href="@Url.Action("Index")">Ana Sayfa</a>
+        <span class="active">@ViewBag.Title</span>
+    </p>
+    <div class="inner-container">
+        <div class="cart">
+            <h3>
+                <span>@ViewBag.Title</span>
+            </h3>
+            @RenderBody()
+        </div>
+    </div>
+</div>
+@section RootScripts{
+    @RenderSection("Scripts", required: false)
+}
