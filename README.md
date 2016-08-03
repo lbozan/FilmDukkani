@@ -14,7 +14,7 @@ Evde zaman geçirmenin en güzel yanlarından bir tanesi herhalde film izlemekti
 
 Projenin asıl kısmı bir web sayfası olacak. Bir örnek üzerinden anlatayım. Bay X sitemize üye olup,filmlerini sitemiz üzerinden kiralamak istiyor. Bay X önce siteye girip, üye olma ekranına girecek. Burada kişisel bilgilerini ve kredi kartı bilgilerini girecek. Kredi kartı bilgileri çok önemli. Çünkü sitemize üye olma  işlemi ilk ücretin kredi kartından çekilmesi ile gerçekleşecek. Ayrıca ayın kaçında üye olmuşsa, bir sonraki ay, aynı günde yine kredi kartından üyelik ücreti çekilecek. Bay X kişisel bilgilerini girdikten sonra üyelik tipini seçecek. Üyelik tipleri ile daha detaylı bilgiler size daha sonra genel koordinatörümüz tarafından verilecek. Bu işlemi de bitirdikten sonra, kredi kartından para çekme işlemi başarıyla gerçekleşmişse Bay X sitemize başarıyla üye olmuş demektir ve artık film kiralamaya hazırdır.
 
-	Bundan sonra Bay X listesini oluşturmaya başlayacaktır. Bizdeki kullanıcı her istediği filmi anında kiralayacak diye bir şey yoktur. Kendisi minimum 10 filmden oluşan bir liste hazırlar. Filmler o liste içerisinden seçilip kullanıcıya gönderilir. Bununla ilgili daha detaylı bilgiyi genel koordinatörümüzden alabilirsiniz.
+Bundan sonra Bay X listesini oluşturmaya başlayacaktır. Bizdeki kullanıcı her istediği filmi anında kiralayacak diye bir şey yoktur. Kendisi minimum 10 filmden oluşan bir liste hazırlar. Filmler o liste içerisinden seçilip kullanıcıya gönderilir. Bununla ilgili daha detaylı bilgiyi genel koordinatörümüzden alabilirsiniz.
 
 Bay X, listesini de oluşturduktan sonra filmlerin geleceği günü belirtmesi gerekmektedir. Bunun için farklı bir ekran kendisine sunulur. O ekranda sipariş verebileceği günler listelenir. Bay X bunlardan birini seçer. Artık Bay X’in yapacakları bitmiştir. Bundan sonra top bize geçmiştir.
 
@@ -32,6 +32,7 @@ Sitenin işleyişinden tamamen ben sorumluyum. Namık Bey’in anlattıklarını
 Öncelikle sitemize üye olmak isteyen bir kişi hangi üyelik paketini seçmek istediğini belirtir. Sistemimizdeki üyelik paketlerimiz şunlardır:
 
 Üyelik Modeli	  Değişim             	Aylık Yaklaşık Film Sayısı	Aylık Ücret
+
 Ekonomik Paket	Bir değişimde 2 Film	16 Film	                    19,90 YTL
 3'lü Paket	    Bir değişimde 3 Film	24 Film	                    29,9 YTL
 4'lüPaket	      Bir değişimde 4 Film	32 Film	                    39,9 YTL
