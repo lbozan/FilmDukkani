@@ -1,0 +1,24 @@
+@model FilmDukkaniMvc.Ilceler
+
+@{
+    ViewBag.Title = "IlceSil";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>İlce Silme Formu</h2><br />
+
+<h3>@ViewBag.ilceAdi Silmek İstediğinizden Eminmisiniz.?</h3>
+<div>
+
+    <hr />
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(model => model.IlID)
+        <div class="form-actions no-color">
+            <input type="submit" value="(Evet) Sil" class="btn btn-default sil"/> <br />
+            @Html.ActionLink("Geri Dön", "IlceListesi", new { IlId = @Model.IlID })
+        </div>
+    }
+</div>
