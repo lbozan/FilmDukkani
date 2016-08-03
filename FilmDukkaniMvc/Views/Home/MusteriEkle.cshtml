@@ -1,0 +1,189 @@
+@using System.Web.Optimization
+@model FilmDukkaniMvc.Models.MusteriModel
+
+@{
+    ViewBag.Title = "Üyelik Formu";
+    Layout = "~/Views/Shared/_HomeLayout.cshtml";
+    List<Iller> sehir = ViewBag.sehir;
+    List<Paketler> paketler = ViewBag.paketler;
+}
+@section Style{
+    @Styles.Render("~/Content/bootstrap")
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true)
+        @Html.ValidationMessage("Hata")
+        <fieldset>
+            <legend>Giriş Bilgileri</legend>
+            <div class="form-group">
+                <span class="control-label col-md-2">
+                    @Html.Label("Paket")
+                </span>
+                <div class="col-md-10">
+                    <select name="paketId" class="valid">
+                        <option value="">Paketinizi Seçin.....</option>
+                        @foreach (var item in paketler)
+                        {
+                            <option value="@item.ID">@item.PaketAdi - @item.PaketFiyat TL.</option>
+                        }
+                    </select>
+                    @Html.ValidationMessage("paket") &nbsp;&nbsp;
+                    @Html.ActionLink("Paket ile ilgili Daha Fazla Bilgi İçin", "FilmPaketleri")
+
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.UserName, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.UserName)
+                    @Html.ValidationMessageFor(model => model.UserName)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Password, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Password)
+                    @Html.ValidationMessageFor(model => model.Password)
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.TPassword, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.TPassword)
+                    @Html.ValidationMessageFor(model => model.TPassword)
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Eposta, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Eposta)
+                    @Html.ValidationMessageFor(model => model.Eposta)
+                </div>
+            </div>
+        </fieldset>
+
+        <fieldset>
+            <legend>Diğer Bilgiler</legend>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Adi, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Adi)
+                    @Html.ValidationMessageFor(model => model.Adi)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Soyadi, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Soyadi)
+                    @Html.ValidationMessageFor(model => model.Soyadi)
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.TelefonNo, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.TelefonNo)
+                    @Html.ValidationMessageFor(model => model.TelefonNo)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.TCNo, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.TCNo)
+                    @Html.ValidationMessageFor(model => model.TCNo)
+                </div>
+            </div>
+
+
+
+            <div class="form-group">
+                @Html.Label("Cinsiyet", new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    Bay <input type="radio" name="Cinsiyet" value="Bay" checked /> |
+                    Bayan<input type="radio" name="Cinsiyet" value="Bayan" />
+                    @Html.ValidationMessageFor(model => model.Cinsiyet)
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Yasi, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Yasi)
+                    @Html.ValidationMessageFor(model => model.Yasi)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.KrediKartNo, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.KrediKartNo)
+                    @Html.ValidationMessageFor(model => model.KrediKartNo)
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.KrediKartSKT, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.KrediKartSKT)
+                    @Html.ValidationMessageFor(model => model.KrediKartSKT)
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.KrediKartCNRNo, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.KrediKartCNRNo)
+                    @Html.ValidationMessageFor(model => model.KrediKartCNRNo)
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Adres, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextAreaFor(model => model.Adres, new { cols = "30", rows = "7" })
+                    @Html.ValidationMessageFor(model => model.Adres)
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.PostaKod, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.PostaKod)
+                    @Html.ValidationMessageFor(model => model.PostaKod)
+                </div>
+            </div>
+            @Html.Partial("~/Views/PartialViews/_SehirIlceSecimView.cshtml", sehir)
+            <div class="form-group">
+                @Html.Label("Sözleşme", new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <textarea cols="30" rows="5" style="font-size: small;color:silver;">
+                        @ViewBag.sozlesme
+                    </textarea>
+                    @Html.ValidationMessage("sozlesme")<br />
+                    <input type="checkbox" name="sozlesme" value="evet" /> Kabul Ediyorum
+                </div>
+            </div>
+
+        </fieldset>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Üye Ol" class="btn btn-default ekle" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Geri Dön", "Index")
+</div>
+
+@section Scripts {
+
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/knockout")
+    @Scripts.Render("~/bundles/jquery")
+
+
+}
