@@ -1,0 +1,157 @@
+@using System.Web.Optimization
+@model FilmDukkaniMvc.Musteriler
+
+@{
+    ViewBag.Title = "Müşteri Düzenle";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    List<Iller> sehir = ViewBag.sehir;
+}
+@section Style{
+    @Styles.Render("~/Content/bootstrap")
+}
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+
+        @Html.ValidationSummary(true)
+        <fieldset>
+            <legend>Sistem Bilgileri - @Model.Users.UserName</legend>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Users.Password, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Users.Password)
+                    @Html.ValidationMessageFor(model => model.Users.Password)
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.DigerBilgiler.Eposta, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.DigerBilgiler.Eposta)
+                    @Html.ValidationMessageFor(model => model.DigerBilgiler.Eposta)
+                </div>
+            </div>
+        </fieldset>
+        <fieldset>
+            <legend>Kişisel Bilgiler</legend>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Adi, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Adi)
+                    @Html.ValidationMessageFor(model => model.Adi)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Soyadi, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Soyadi)
+                    @Html.ValidationMessageFor(model => model.Soyadi)
+                </div>
+            </div>
+        
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.DigerBilgiler.TelefonNo, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.DigerBilgiler.TelefonNo)
+                    @Html.ValidationMessageFor(model => model.DigerBilgiler.TelefonNo)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.TCNo, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.TCNo)
+                    @Html.ValidationMessageFor(model => model.TCNo)
+                </div>
+            </div>
+
+
+
+            <div class="form-group">
+                @Html.Label("Cinsiyet", new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @if (Model.DigerBilgiler.Cinsiyet == "Bay")
+                    {
+                        <span>
+                            Bay <input type="radio" name="Cinsiyet" value="Bay" checked /> |
+                            Bayan<input type="radio" name="Cinsiyet" value="Bayan" />
+                        </span>
+                    }
+                    else
+                    {
+                        <span>
+                            Bay <input type="radio" name="Cinsiyet" value="Bay" /> |
+                            Bayan<input type="radio" name="Cinsiyet" value="Bayan" checked />
+                        </span>
+                    }
+
+
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.DigerBilgiler.Yasi, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.DigerBilgiler.Yasi)
+                    @Html.ValidationMessageFor(model => model.DigerBilgiler.Yasi)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.KrediKartBilgileri.KrediKartNo, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.KrediKartBilgileri.KrediKartNo)
+                    @Html.ValidationMessageFor(model => model.KrediKartBilgileri.KrediKartNo)
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.KrediKartBilgileri.KrediKartSKT, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.KrediKartBilgileri.KrediKartSKT)
+                    @Html.ValidationMessageFor(model => model.KrediKartBilgileri.KrediKartSKT)
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.KrediKartBilgileri.KrediKartCNRNo, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.KrediKartBilgileri.KrediKartCNRNo)
+                    @Html.ValidationMessageFor(model => model.KrediKartBilgileri.KrediKartCNRNo)
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.DigerBilgiler.Adres, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextAreaFor(model => model.DigerBilgiler.Adres, new { cols = "30", rows = "7" })
+                    @Html.ValidationMessageFor(model => model.DigerBilgiler.Adres)
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.DigerBilgiler.PostaKod, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.DigerBilgiler.PostaKod)
+                    @Html.ValidationMessageFor(model => model.DigerBilgiler.PostaKod)
+                </div>
+            </div>
+            <input type="hidden" value="@ViewBag.ilceId" name="ilceId" id="ilceId" onloadstart="doldur(@ViewBag.ilceId);" onload="doldur(@ViewBag.ilceId);" />
+            @Html.Partial("~/Views/PartialViews/_SehirIlceSecimView.cshtml", sehir)
+        </fieldset>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Güncelle" class="btn btn-default duzenle" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.Partial("~/Views/PartialViews/_GeriDonView.cshtml", "MusteriListesi")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/knockout")
+    @Scripts.Render("~/bundles/jquery")
+}
