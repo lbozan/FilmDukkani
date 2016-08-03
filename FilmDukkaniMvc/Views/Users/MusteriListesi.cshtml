@@ -1,0 +1,46 @@
+@model IEnumerable<FilmDukkaniMvc.Musteriler>
+
+@{
+    ViewBag.Title = "Musteri Listesi";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<p>
+    <img src="@Url.Content("~/Content/images/Duzen.png")" alt="Düzenle" width="17" height="17" /> @Html.ActionLink("Müşteri Ekle", "MusteriEkle", "Home")
+</p>
+<table>
+    <tbody>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Adi)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Soyadi)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Adi)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Soyadi)
+                </td>
+                <td>
+                    @Html.ActionLink("Güncelle", "MusteriDuzenle", new { Id = item.ID }, new { @class = "duzenle" }) |
+                    @Html.ActionLink("Detaylar", "MusteriDetails", new { Id = item.ID }, new { @class = "ekle" }) |
+
+                    @if (HttpContext.Current.User.IsInRole("Admin"))
+                    {
+                        @Html.ActionLink("Sil", "MusteriSil", new { Id = item.ID }, new { @class = "sil" })
+                    }
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
