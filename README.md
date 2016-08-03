@@ -2,11 +2,11 @@
 
 Bilge Adam Proje Bitirme Ödevi.
 
-### Genel Anlatım (Senaryo):
+### Genel Anlatım  ## (Senaryo):
 
-Son zamanlarda, dünya üzerinde bilgi teknolojilerinin yayılması ve kullanım alanlarının yaygınlaşmasıyla birlikte, insan gücüne yapılan yatırımlar, artık bu devrimin başlamasıyla nerdeyse yok olma safhasına geldi. Yemek siparişleri, çiçek gönderme, kitap ve cd satın alma gibi alışverişler evden birkaç tık ile yapılmaya başladı. İşte bu sebepten dolayı, artık evimizde geçirdiğimiz zaman yukarıda özetlemeye çalıştığımız nedenlerden dolayı daha fazla yer tutmaya başladı.   
+__ Son zamanlarda, dünya üzerinde bilgi teknolojilerinin yayılması ve kullanım alanlarının yaygınlaşmasıyla birlikte, insan gücüne yapılan yatırımlar, artık bu devrimin başlamasıyla nerdeyse yok olma safhasına geldi. Yemek siparişleri, çiçek gönderme, kitap ve cd satın alma gibi alışverişler evden birkaç tık ile yapılmaya başladı. İşte bu sebepten dolayı, artık evimizde geçirdiğimiz zaman yukarıda özetlemeye çalıştığımız nedenlerden dolayı daha fazla yer tutmaya başladı.   
 
-Evde zaman geçirmenin en güzel yanlarından bir tanesi herhalde film izlemektir. Fakat dışarıya çıkıp bir film kiralama dükkânına gidip film seçmek ve bunu tekrar geriye götürmek her zaman bir zaman kaybı olmuştur. Projemiz işte tam bu noktada devreye giriyor. Projenin amacı kullanıcılara evde izlemek istediği filmleri bir internet sitesi üzerinden seçtirip, kargo ile kapılarana kadar getirmek. Ancak bu işlem bir satın alma işlemi değil, kiralama işlemi olacaktır. Kargo nasıl filmleri teslim etmişse, kullanıcıların istediği tarihte de gelip yine aynı şekilde filmleri geri alcaktır. Ücretleri ise aylık olarak kredi kartlarından çekilecektir.  Proje, kullanıcıların DVD’lerini sipariş edip, takibini yapabileceği bir uygulama ile yönetimin kullanacağı muhasebe, kargo ve operasyon işlemlerini takip edebileceği başka bir uygulamadan oluşmaktadır.
+_ Evde zaman geçirmenin en güzel yanlarından bir tanesi herhalde film izlemektir. Fakat dışarıya çıkıp bir film kiralama dükkânına gidip film seçmek ve bunu tekrar geriye götürmek her zaman bir zaman kaybı olmuştur. Projemiz işte tam bu noktada devreye giriyor. Projenin amacı kullanıcılara evde izlemek istediği filmleri bir internet sitesi üzerinden seçtirip, kargo ile kapılarana kadar getirmek. Ancak bu işlem bir satın alma işlemi değil, kiralama işlemi olacaktır. Kargo nasıl filmleri teslim etmişse, kullanıcıların istediği tarihte de gelip yine aynı şekilde filmleri geri alcaktır. Ücretleri ise aylık olarak kredi kartlarından çekilecektir.  Proje, kullanıcıların DVD’lerini sipariş edip, takibini yapabileceği bir uygulama ile yönetimin kullanacağı muhasebe, kargo ve operasyon işlemlerini takip edebileceği başka bir uygulamadan oluşmaktadır.
 
 ### Film Dükkanı Sahibi,  Necdet Bogoviç
 
@@ -103,22 +103,22 @@ Benim işim sadece bu kadar. Bu satın alımlardaki parasal işlemleri muhasebec
 
 Tedarikçiden elimize ulaşan filmlerin, belirli bir düzen içinde testlere tabi tutulup, sisteme eklenmesi işlerini ben yürüteceğim. İşimin daha etkin olabilmesi için en hızlı ve doğru bir şekilde tüm filmleri test etmek ve bunların sistem için gerekli tüm bilgilerini kayıt etmem gerekiyor. Bir filmle ilgili gireceğim veriler şunlar olacaktır:
 
-•	Filmin adı 
-•	Yabancı ise filmin orjinal adı
-•	Yönetmeni (Birden fazla olabilir)
-•	Özeti
-•	Kategorisi (Birden fazla olabilir. Bir film hem Klasik, hem de Korku kategorisine girebilir)
-•	Oyuncular (Birden fazla)
-•	Teknik özellikleri
-•	Yapım yılı
-•	Ses özellikleri
-•	Altyazıları
-•	Varsa fragmanı
-•	Varsa aldığı ödüller
-•	Barkod numarası 
-•	Tedarikçisi 
-•	Kapak resmi 
-•	Aldığı ve/veya Aday gösterildiği ödüller (Birden fazla olabilir)
+*	Filmin adı 
+*	Yabancı ise filmin orjinal adı
+*	Yönetmeni (Birden fazla olabilir)
+*	Özeti
+*	Kategorisi (Birden fazla olabilir. Bir film hem Klasik, hem de Korku kategorisine girebilir)
+*	Oyuncular (Birden fazla)
+*	Teknik özellikleri
+*	Yapım yılı
+*	Ses özellikleri
+*	Altyazıları
+*	Varsa fragmanı
+*	Varsa aldığı ödüller
+*	Barkod numarası 
+*	Tedarikçisi 
+*	Kapak resmi 
+*	Aldığı ve/veya Aday gösterildiği ödüller (Birden fazla olabilir)
 
 
 
@@ -141,7 +141,7 @@ Mesai bitimine yakın, ertesi günün teslimatlarını zarflara koyarız ve bunl
 Sabah kuryeler gelir ve bu zarfları alarak yola koyulurlar.
 Benim bu işleri yapabilmem için sizin programdan istediğimiz başlıca şeyler :
 
-•	Kuryelere teslim edilecek filmlerin tümünün bir listesi. Bu liste hangi kurye’nin hangi müşteriye, hangi filmleri götürdüğünü söylemeli. 
-•	Filmlerin raflardaki yerini girebilmem ve görebilmem için bir sistem.
-•	Müşterilerin adı, adresi, varsa açıklamasını büyük zarflara basacak bir etiket basım sistemi. Ayrıca hem kuryenin hem de müşterinin görebileceği şekilde, müşteri bir önceki teslimatta elindeki filmleri iade etmemişse uyarı yazısı da otomatik olarak basılmalı.
-•	Testten sonra film bozuk çıkmışsa bunun bilgisini girmek ve görmek için bir sistem.
+*	Kuryelere teslim edilecek filmlerin tümünün bir listesi. Bu liste hangi kurye’nin hangi müşteriye, hangi filmleri götürdüğünü söylemeli. 
+*	Filmlerin raflardaki yerini girebilmem ve görebilmem için bir sistem.
+*	Müşterilerin adı, adresi, varsa açıklamasını büyük zarflara basacak bir etiket basım sistemi. Ayrıca hem kuryenin hem de müşterinin görebileceği şekilde, müşteri bir önceki teslimatta elindeki filmleri iade etmemişse uyarı yazısı da otomatik olarak basılmalı.
+*	Testten sonra film bozuk çıkmışsa bunun bilgisini girmek ve görmek için bir sistem.
