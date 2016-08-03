@@ -1,0 +1,50 @@
+@using System.Web.Optimization
+@model IEnumerable<FilmDukkaniMvc.AltYazilar>
+
+@{
+    ViewBag.Title = "Filme Alt Yazi Ekle";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+@section Style{
+    @System.Web.Optimization.Styles.Render("~/Content/bootstrap")
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true)
+        <input type="hidden" value="@ViewBag.filmId" name="filmId" />
+        <div class="form-group">
+            @Html.ValidationMessage("Onay", new { @class = "color:green !implement" })<br /><br />
+            @Html.Label("Alt Yazılar", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <select name="altyaziId" style="width:300px">
+                    <option value="">Kategori Seçin..</option>
+                    @foreach (var item in Model)
+                    {
+                        <option value="@item.ID">@item.DilAdi</option>
+                    }
+                </select>
+
+                @Html.ValidationMessage("Hata")
+            </div>
+        </div>
+
+        <br />
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Ekle" class="btn btn-default ekle" />
+            </div>
+        </div>
+    </div>
+}
+<br /><br />
+<div>
+    @Html.ActionLink("Geri Dön", "FilmDetails", new { Id = @ViewBag.filmId })
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
