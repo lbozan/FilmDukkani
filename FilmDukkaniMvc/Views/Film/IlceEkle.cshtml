@@ -1,0 +1,45 @@
+@using System.Web.Optimization
+@model FilmDukkaniMvc.Ilceler
+
+@{
+    ViewBag.Title = "Ilce Ekle";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+@section Style{
+    @Styles.Render("~/Content/bootstrap")
+}
+
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+
+        <hr />
+        @Html.ValidationSummary(true)
+        @Html.HiddenFor(model => model.IlID)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.IlceAdi, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.IlceAdi)
+                @Html.ValidationMessageFor(model => model.IlceAdi)
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Ekle" class="btn btn-default ekle" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+  <br />  @Html.ActionLink("Geri Dön", "IlceListesi", new { IlId = @Model.IlID })
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
