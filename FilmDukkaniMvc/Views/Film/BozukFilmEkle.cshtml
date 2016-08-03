@@ -1,0 +1,72 @@
+@using System.Web.Optimization
+@model FilmDukkaniMvc.BozukFilms
+
+@{
+    ViewBag.Title = "Bozuk Film Ekle";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+
+    List<Films> filmList = ViewBag.filmList;
+    List<Musteriler> musteriList = ViewBag.musteriList;
+}
+@section Style{
+    @System.Web.Optimization.Styles.Render("~/Content/bootstrap")
+}
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true)
+        @Html.ValidationMessage("Hata")
+        <div class="form-group">
+            @Html.LabelFor(model => model.FilmID, "Film Adı", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <select name="FilmId" style="width:200px">
+                    @foreach (var item in filmList)
+                    {
+                        <option value="@item.ID">@item.FilmAdi</option>
+                    }
+                </select>
+                @Html.ValidationMessageFor(model => model.FilmID)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.MusteriID, "Müşteri Adı", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <select name="MusteriID" style="width:200px">
+                    @foreach (var item in musteriList)
+                    {
+                        <option value="@item.ID">@item.Adi  @item.Soyadi</option>
+                    }
+                </select>
+                @Html.ValidationMessageFor(model => model.MusteriID)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Aciklama, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.Aciklama, new { rows = 5, cols = 50 })
+                @Html.ValidationMessageFor(model => model.Aciklama)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Ekle" class="btn btn-default ekle" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    <br />
+    @Html.ActionLink("Geri Dön", "BozukFilmListesi")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
