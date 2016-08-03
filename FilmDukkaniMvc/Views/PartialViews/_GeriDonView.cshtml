@@ -1,0 +1,5 @@
+@model string
+    @if (HttpContext.Current.User.IsInRole("Admin"))
+    {
+        @Html.ActionLink("Geri Dön", @Model)
+    }
