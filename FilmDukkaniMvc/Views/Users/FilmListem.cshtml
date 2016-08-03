@@ -1,0 +1,61 @@
+@using System.Web.Optimization
+@model IEnumerable<FilmDukkaniMvc.MusteriFilmListesi>
+
+@{
+    ViewBag.Title = "Film Listem";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    int min = Model.Min(x => x.OncelikSirasi);
+    int max = Model.Max(x => x.OncelikSirasi);
+}
+<span style="color:green">@Html.ActionLink("Sipariş Tarihlerim", "FilmSiparisGunleri", "Users")</span><br /><br />
+
+@if (Model.ToList().Count < 10)
+{
+    <span style="color:red">! Film Listenizin Gönderilmesi İçin En az 10 Film Seçmeniz lazım</span>
+}
+
+
+<table>
+    <tbody>
+        <tr>
+            <th>
+                @Html.DisplayName("Film Adı")
+            </th>
+
+            <th>Sıra</th>
+            <th>Sil</th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <a href="@Url.Action("FilmDetails", "Home", new { Id = item.FilmlerID })">@Html.DisplayFor(modelItem => item.Films.FilmAdi)</a>
+                </td>
+                <td>
+                    @if (Model.Count() >= 2)
+                    {
+                        if (min == item.OncelikSirasi)
+                        {
+                            <a href="@Url.Action("FilmListemSira", new { Id = item.MusteriID, fId = item.ID, durum = false })"><img src="@Url.Content("~/Content/images/asagi.png")" alt="Aşağı İndir" /></a>
+                        }
+                        else
+                        {
+                            if (max == item.OncelikSirasi)
+                            {
+                                <a href="@Url.Action("FilmListemSira", new { Id = item.MusteriID, fId = item.ID, durum = true })"><img src="@Url.Content("~/Content/images/yukari.jpg")" alt="Yukarı Al" /></a>
+                            }
+                            else
+                            {
+                                <a href="@Url.Action("FilmListemSira", new { Id=item.MusteriID,fId=item.ID, durum=false })"><img src="@Url.Content("~/Content/images/asagi.png")" alt="Aşağı İndir" /></a>
+                                <a href="@Url.Action("FilmListemSira", new { Id = item.MusteriID, fId = item.ID, durum = true })"><img src="@Url.Content("~/Content/images/yukari.jpg")" alt="Yukarı Al" /></a>
+                            }
+                        }
+                    }
+
+                </td>
+                <td><a href="@Url.Action("FilmListemSil", new { Id = item.ID })"><img src="@Url.Content("~/Content/images/sil.png")" alt="Çıkar" /></a></td>
+            </tr>
+        }
+    </tbody>
+</table>
