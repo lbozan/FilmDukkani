@@ -1,0 +1,35 @@
+@model IEnumerable<FilmDukkaniMvc.AltYazilar>
+
+@{
+    ViewBag.Title = "Alt Yazi Listesi";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+
+<p>
+    <img src="@Url.Content("~/Content/images/ekle.png")" alt="Ekle" width="17" height="17" />&nbsp; @Html.ActionLink("Alt Yazı Ekle", "AltYaziEkle")
+</p>
+<table>
+    <tbody>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.DilAdi)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DilAdi)
+                </td>
+                <td>
+                    @Html.ActionLink("Güncelle", "AltYaziDuzenle", new { Id = item.ID }, new { @class = "duzenle" }) |
+                    @Html.ActionLink("Sil", "AltYaziSil", new { Id = item.ID }, new { @class = "sil" }) |
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
