@@ -1,0 +1,39 @@
+@model FilmDukkaniMvc.Yonetmens
+
+@{
+    ViewBag.Title = "Yönetmen Sil";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<h3>Bunu Silmek İstediğinizden Eminmisiniz.?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Adi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Adi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Soyadi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Soyadi)
+        </dd>
+         
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="(Evet) Sil" class="btn btn-default sil" /> 
+         <br /><br />   @Html.ActionLink("Geri Dön", "YonetmenListesi")
+        </div>
+    }
+</div>
