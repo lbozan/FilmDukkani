@@ -1,0 +1,155 @@
+@using System.Web.Optimization
+@model FilmDukkaniMvc.Models.FilmModel
+
+@{
+    ViewBag.Title = "Film Düzenle";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    List<Rafs> rafList = ViewBag.rafList;
+
+}
+
+@section Style{
+    @Styles.Render("~/Content/bootstrap")
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationMessage("Hata")
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.BarkodNo, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.BarkodNo)
+                @Html.ValidationMessageFor(model => model.BarkodNo)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.FilmAdi, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.FilmAdi)
+                @Html.ValidationMessageFor(model => model.FilmAdi)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.YabanciAdi, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.YabanciAdi)
+                @Html.ValidationMessageFor(model => model.YabanciAdi)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Sure, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Sure)
+                @Html.ValidationMessageFor(model => model.Sure)
+            </div>
+        </div>
+
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Fiyat, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Fiyat)
+                @Html.ValidationMessageFor(model => model.Fiyat)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.FragmanUrl, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.FragmanUrl)
+                @Html.ValidationMessageFor(model => model.FragmanUrl)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.UcBoyutlumu, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                Evet  @Html.RadioButtonFor(model => model.UcBoyutlumu, "true", new { Checked = "checked" })
+                | Hayır @Html.RadioButtonFor(model => model.UcBoyutlumu, "false")
+                @Html.ValidationMessageFor(model => model.UcBoyutlumu)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ImdbPuan, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ImdbPuan)
+                @Html.ValidationMessageFor(model => model.ImdbPuan)
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Stok, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Stok)
+                @Html.ValidationMessageFor(model => model.Stok)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.YeniFilmMi, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                Evet @Html.RadioButtonFor(model => model.YeniFilmMi, "true", new { Checked = "checked" })
+                | Hayır @Html.RadioButtonFor(model => model.YeniFilmMi, "false")
+                @Html.ValidationMessageFor(model => model.YeniFilmMi)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.EditorSectiMi, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                Evet @Html.RadioButtonFor(model => model.EditorSectiMi, "true", new { Checked = "checked" })
+                | Hayır @Html.RadioButtonFor(model => model.EditorSectiMi, "false")
+                @Html.ValidationMessageFor(model => model.EditorSectiMi)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Aciklama, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.Aciklama, new { @cols = "80", @rows = "4" })
+                @Html.ValidationMessageFor(model => model.Aciklama)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.Label("Raflar", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <select name="RafId">
+                    <option value="">Bir Raf Seçin...</option>
+                    @foreach (var item in rafList)
+                    {
+                        if (Model.RafId == item.ID)
+                        {
+                            <option value="@item.ID" selected>@item.RafAdi</option>
+                        }
+                        else
+                        {
+                            <option value="@item.ID">@item.RafAdi</option>
+                        }
+
+                    }
+                </select>
+                @Html.ValidationMessageFor(model => model.RafId)
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Güncelle" class="btn btn-default duzenle" />
+            </div>
+        </div>
+    </div>
+}
+<br />
+<div>
+    @Html.ActionLink("Geri Dön", "FilmListesi")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
