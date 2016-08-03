@@ -1,0 +1,69 @@
+@using FilmDukkaniMvc.Helpers
+@model IEnumerable<FilmDukkaniMvc.MusteriFilmSiparisListesi>
+
+@{
+    ViewBag.Title = "Siparisleri Hazırla";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Adi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Soyadi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Ilce)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Adres)
+        </th>
+
+        <th>
+            @Html.DisplayName("Filmler")
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            @if (item.GondermeDurumu == false)
+            {
+                <td class="sil">
+                    @Html.DisplayFor(modelItem => item.Adi)
+                </td>
+                <td class="sil">
+                    @Html.DisplayFor(modelItem => item.Soyadi)
+                </td>
+            }
+            else
+            {
+                <td>
+                    @Html.DisplayFor(modelItem => item.Adi)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Soyadi)
+                </td>
+            }
+            <td>
+                @Html.DisplayFor(modelItem => item.Ilce)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Adres)
+            </td>
+            <td>
+                @foreach (var filmler in item.FilmSiparisListesi)
+                {
+                    <span title="@filmler.Films.FilmAdi">@Html.Kisalt(filmler.Films.FilmAdi.ToString(), 20)</span><br />
+                }
+            </td>
+            <td>
+                @Html.ActionLink("Siparişi Çıkar", "SiparisCikar", new { Id = item.ID }, new { @class = "sil" })
+            </td>
+        </tr>
+    }
+</table>
