@@ -1,0 +1,21 @@
+@model FilmDukkaniMvc.AltYazilar
+
+@{
+    ViewBag.Title = "Alt Yazı Sil";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<h3>@Model.DilAdi Silmek istediğinizden eminimisiniz.?</h3>
+<div>
+    <hr />
+    
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="(Evet) Sil" class="btn btn-default sil" /> <br /><br />
+            @Html.ActionLink("Geri Dön", "AltYaziListesi")
+        </div>
+    }
+</div>
