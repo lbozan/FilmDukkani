@@ -1,0 +1,187 @@
+@model FilmDukkaniMvc.Films
+
+@{
+    ViewBag.Title = "Film Details";
+    Layout = "~/Views/Shared/_HomeLayout.cshtml";
+    List<Kategories> kategoriListesi = ViewBag.kategoriListesi;
+    int uId = ViewBag.userId;
+}
+
+<p id="breadcrumbs">
+    <a href="#">Ana Sayfa</a>
+    <span class="active">@ViewBag.Title</span>
+</p>
+
+<div class="inner-container clearfix">
+    <div id="product" class="clearfix">
+        <div class="product-gallery">
+            <div class="large-image">
+                <div id="wrap" style="top:0px;z-index:9999;position:relative;">
+                    <img src="@Url.Content("~/Afis/" + Model.AfisPath)" alt="" style="display: block;">
+                </div>
+            </div>
+            <br /><br />
+            <center>
+                <span>
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        if (!Model.MusteriFilmBegens.Any(x => x.MusteriID == uId))
+                        {
+                            <a href="@Url.Action("FilmBegen", "Users", new { Id = uId, fId = Model.ID, durum = true })"><img src="@Url.Content("~/Content/images/begen.png")" alt="Begendim" /></a>
+                            <a href="@Url.Action("FilmBegen", "Users", new { Id = uId, fId = Model.ID, durum = false })"><img src="@Url.Content("~/Content/images/begenme.png")" alt="Begenmedim" /></a>
+                        }
+                    }
+                </span><hr />
+                <span class="duzenle">@Model.MusteriFilmBegens.Where(x => x.Begenilen == true).Count() Begenildi</span>  -
+                <span class="sil">@Model.MusteriFilmBegens.Where(x => x.Begenilen == false).Count() Begenilmedi</span>
+            </center>
+        </div><!-- end of .product-gallery -->
+
+        <div class="product-detail">
+
+            <h2><a href="#">@Model.FilmAdi (@Model.YabanciAdi)</a></h2>
+
+
+            <p>Süre : @Model.Sure.ToString(@"hh\:mm")</p>
+            <p>Yapım Tarihi : @Model.YapimTarihi.ToString("dd/MM/yyyy")</p>
+            <p>Imdb:<span>@Model.ImdbPuan</span></p>
+
+            <p class="price">Özellikler</p>
+            @if (Model.UcBoyutlumu == true)
+            {
+                <p class="tax">3D</p>
+            }
+            @if (Model.EditorSectiMi == true)
+            {
+                <p class="tax">Editör Seçimi</p>
+            }
+            @if (Model.YeniFilmMi == true)
+            {
+                <p class="tax">Yeni Film</p>
+            }
+
+            <p class="add-links">
+            <p class="duzenle">Kategori</p>
+
+            @if (Model.Kategories.Count > 0)
+            {
+                foreach (var item in Model.Kategories)
+                {
+                    <p class="tax">@item.KategoriAdi </p>
+                }
+            }
+            <p class="duzenle">Yönetmen </p>
+            @if (Model.Yonetmens.Count > 0)
+            {
+                foreach (var item in Model.Yonetmens)
+                {
+                    <p class="tax">@item.Adi  @item.Soyadi</p>
+                }
+            }
+            <p class="duzenle">Baş Rol Oyuncu</p>
+            @if (Model.FilmOyuncuRelation.Where(x => x.BasrolMi == true).Count() > 0)
+            {
+                foreach (var item in Model.FilmOyuncuRelation.Where(x => x.BasrolMi == true))
+                {
+                    <p class="tax">@item.Oyuncular.Adi  @item.Oyuncular.Soyadi</p>
+                }
+            }
+            <p class="duzenle">Oyuncu</p>
+            @if (Model.FilmOyuncuRelation.Where(x => x.BasrolMi == false).Count() > 0)
+            {
+                foreach (var item in Model.FilmOyuncuRelation.Where(x => x.BasrolMi == false))
+                {
+                    <p class="tax">@item.Oyuncular.Adi  @item.Oyuncular.Soyadi </p>
+                }
+            }
+            <p class="duzenle">Aldığı Ödül</p>
+            @if (Model.FilmOdulRelation.Where(x => x.FilmID == Model.ID && x.AldiMi == true).Count() > 0)
+            {
+                foreach (var item in Model.FilmOdulRelation.Where(x => x.FilmID == Model.ID && x.AldiMi == true))
+                {
+                    <p class="tax">@item.Oduls.OdulAdi</p>
+                }
+            }
+            <p class="duzenle">Aday Gösterilen Ödül </p>
+            @if (Model.FilmOdulRelation.Where(x => x.FilmID == Model.ID && x.AldiMi == false).Count() > 0)
+            {
+                foreach (var item in Model.FilmOdulRelation.Where(x => x.FilmID == Model.ID && x.AldiMi == false))
+                {
+                    <p class="tax">@item.Oduls.OdulAdi</p>
+                }
+            }
+            <p class="duzenle">Alt Yazısı</p>
+            @if (Model.AltYazilar.Count > 0)
+            {
+                foreach (var item in Model.AltYazilar)
+                {
+                    <p class="tax">@item.DilAdi</p>
+                }
+            }
+
+            </p>
+            <p class="add-links">
+                <a href="#">Ek Bilgi : @Model.Aciklama</a>
+
+            </p>
+
+
+        </div><!-- end of .product-detail -->
+        <p></p>
+
+    </div>
+    @Html.Partial("~/Views/PartialViews/SagKategoriViews.cshtml", kategoriListesi)
+    <div id="blog">
+        <div class="comments">
+            @if (Model.MusteriFilmYorums.Count > 0)
+            {
+                <h4 class="heading">@(Model.MusteriFilmYorums.Count) <span> Yorum Var.</span></h4>
+
+                <ul class="comment-list">
+                    @foreach (MusteriFilmYorums item in @Model.MusteriFilmYorums)
+                    {
+                        <li class="clearfix">
+                            <div class="comment-detail">
+                                <h4><a href="#">@item.Musteriler.Adi -@item.Musteriler.Soyadi</a> / <span>@item.KayitTarihi</span></h4>
+                                <p>@item.Yorum</p>
+
+                                @if (User.IsInRole("Admin"))
+                                {
+                                    <a href="@Url.Action("FilmYorumlariSil", "Film", new { Id = item.FilmID, yId = item.ID })" class="reply">Yorumu Sil</a>
+                                }
+
+                            </div><!-- end of .author detail -->
+                        </li>
+                    }
+                </ul><!-- end of .comment-list -->
+            }
+            else
+            {
+                <h4 class="heading">Yorum Yok</h4><hr />
+            }
+            @if (HttpContext.Current.User.Identity.IsAuthenticated)
+            {
+
+                <form class="comment-form" method="post" action="@Url.Action("FilmYorumEkle","Users")">
+                    <h3>Yorum Yapın</h3>
+                    <div>
+                        <input type="hidden" name="filmId" value="@Model.ID" />
+                        <fieldset class="clearfix">
+                            <label for="message">Yorumunuz:</label>
+                            <textarea id="message" cols="5" rows="5" name="yorum"></textarea>
+                        </fieldset>
+                        <fieldset class="submit-button clearfix">
+                            <input type="submit" class="submit" value="Gönder">
+                        </fieldset>
+                    </div>
+                </form><!-- end of .comment-form -->
+            }
+            else
+            {
+                <h4 class="heading">Yorum Yapmak İçin @Html.ActionLink("Giriş", "Giris") Yapmanız Gerekir</h4><hr />
+            }
+
+        </div>
+    </div>
+
+</div>
