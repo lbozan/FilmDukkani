@@ -1,0 +1,43 @@
+@using System.Web.Optimization
+@model FilmDukkaniMvc.Rafs
+
+@{
+    ViewBag.Title = "Raf Ekle";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+@section Style{
+    @Styles.Render("~/Content/bootstrap")
+}
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+
+        <hr />
+        @Html.ValidationSummary(true)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.RafAdi, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.RafAdi)
+                @Html.ValidationMessageFor(model => model.RafAdi)
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Ekle" class="btn btn-default ekle" />
+            </div>
+        </div>
+    </div>
+}
+<br />
+<div>
+    @Html.ActionLink("Geri Dön", "RafListesi")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
