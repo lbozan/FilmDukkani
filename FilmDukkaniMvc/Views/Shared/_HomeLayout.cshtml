@@ -1,0 +1,46 @@
+@{
+    ViewBag.Title = "_HomeLayout";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section RootStyle{
+    @RenderSection("Style", required: false)
+}
+<div class="navigation-wrapper">
+    <!-- Üst menu -->
+    <ul id="navigation" class="clearfix">
+        <li><a href="@Url.Action("Index","Home")"><img src="@Url.Content("~/Content/images/home.png")" alt="" />Ana Sayfa</a></li>
+        <li><a href="@Url.Action("Index", "Home", new { Id ="" , yeni = true })">Yeni Filmler</a></li>
+        
+        <li><a href="@Url.Action("Hakkimizda")">Hakkımızda</a></li>
+        <li><a href="@Url.Action("Iletisim")">İletişim</a></li>
+    </ul>
+</div>
+<div class="bottom-wrapper">
+    <div id="bottom" class="clearfix">
+        @if (!HttpContext.Current.User.Identity.IsAuthenticated)
+        {
+            <strong class="welcome-message">Hoş Geldiniz  <a href="@Url.Action("Giris")">Giriş Yapın</a> veya <a href="@Url.Action("MusteriEkle")">Üye Olun</a>.</strong>
+        }
+        else
+        {
+            <strong class="welcome-message">Hoş Geldiniz  Sayın : @HttpContext.Current.User.Identity.Name  </strong>
+        }
+
+    </div>
+</div>
+<div class="container">
+
+    @RenderBody()
+
+</div>
+<div class="footer-wrapper">
+    <div id="footer" class="clearfix">
+        <div class="column double">
+            <p>kısa birley </p>
+        </div>
+    </div>
+</div>
+@section RootScripts{
+    @RenderSection("Scripts", required: false)
+}
