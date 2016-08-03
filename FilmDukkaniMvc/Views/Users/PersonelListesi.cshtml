@@ -1,0 +1,40 @@
+@model IEnumerable<FilmDukkaniMvc.Personel>
+
+@{
+    ViewBag.Title = "Personel Listesi";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<p>
+    <img src="@Url.Content("~/Content/images/Duzen.png")" alt="Düzenle" width="17" height="17" /> @Html.ActionLink("Personel Ekle", "PersonelEkle")<br />
+</p>
+<table>
+    <tbody>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Adi)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Soyadi)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Adi)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Soyadi)
+                </td>
+                <td>
+                    @Html.ActionLink("Detaylar", "PersonelDetails", new { Id = item.ID }, new { @class = "ekle" }) |
+                    @Html.ActionLink("Güncelle", "PersonelDuzenle", new { Id = item.ID }, new { @class = "duzenle" }) |
+                    @Html.ActionLink("Sil", "PersonelSil", new { Id = item.ID }, new { @class = "sil" })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
