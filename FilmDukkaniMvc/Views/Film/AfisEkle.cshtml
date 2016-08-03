@@ -1,0 +1,16 @@
+@{
+    ViewBag.Title = "Afis Ekle";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+@section Style{
+    @System.Web.Optimization.Styles.Render("~/Content/bootstrap")
+}
+@using (Html.BeginForm("AfisEkle", "Film", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.ValidationMessage("Hata");
+    <input type="hidden" name="filmId" value="@ViewBag.filmId" />
+    <input type="file" name="file" /><br />
+    
+    <input type="submit" value="Yükle" />
+}
+
