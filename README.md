@@ -2,13 +2,13 @@
 
 Bilge Adam Proje Bitirme Ödevi.
 
-# Genel Anlatım (Senaryo):
+### Genel Anlatım (Senaryo):
 
 Son zamanlarda, dünya üzerinde bilgi teknolojilerinin yayılması ve kullanım alanlarının yaygınlaşmasıyla birlikte, insan gücüne yapılan yatırımlar, artık bu devrimin başlamasıyla nerdeyse yok olma safhasına geldi. Yemek siparişleri, çiçek gönderme, kitap ve cd satın alma gibi alışverişler evden birkaç tık ile yapılmaya başladı. İşte bu sebepten dolayı, artık evimizde geçirdiğimiz zaman yukarıda özetlemeye çalıştığımız nedenlerden dolayı daha fazla yer tutmaya başladı.   
 
 Evde zaman geçirmenin en güzel yanlarından bir tanesi herhalde film izlemektir. Fakat dışarıya çıkıp bir film kiralama dükkânına gidip film seçmek ve bunu tekrar geriye götürmek her zaman bir zaman kaybı olmuştur. Projemiz işte tam bu noktada devreye giriyor. Projenin amacı kullanıcılara evde izlemek istediği filmleri bir internet sitesi üzerinden seçtirip, kargo ile kapılarana kadar getirmek. Ancak bu işlem bir satın alma işlemi değil, kiralama işlemi olacaktır. Kargo nasıl filmleri teslim etmişse, kullanıcıların istediği tarihte de gelip yine aynı şekilde filmleri geri alcaktır. Ücretleri ise aylık olarak kredi kartlarından çekilecektir.  Proje, kullanıcıların DVD’lerini sipariş edip, takibini yapabileceği bir uygulama ile yönetimin kullanacağı muhasebe, kargo ve operasyon işlemlerini takip edebileceği başka bir uygulamadan oluşmaktadır.
 
-# Film Dükkanı Sahibi,  Necdet Bogoviç
+### Film Dükkanı Sahibi,  Necdet Bogoviç
 
 1998 yılından beri Yazıcıoğlu İşhanı’nda faaliyet gösteren film satış ve kiralama işleri yapan küçük bir dükkâna sahibim. Artık işimi büyütmeye ve tamamen dijital ortama aktarmaya  karar verdim. Bunun için hali hazırdaki elemanlarımı bu proje için farklı görevlere atadım. Kendileri ile görüşeceksiniz zaten. Sizden istediğim, bu projeyi en kısa zamanda hayata geçirmeniz. 
 
@@ -26,7 +26,7 @@ Dağıtım bittikten sonra kuryeler merkeze gelir ve ellerindeki filmleri teslim
 Sizden istediğimiz şey bu web sayfasını oluşturmanız ve arka planda yönetimi sağlayacak başka bir program yazmanız.
 
 
-# Genel Koordinatör, Kayhan Düzgün
+### Genel Koordinatör, Kayhan Düzgün
 
 Sitenin işleyişinden tamamen ben sorumluyum. Namık Bey’in anlattıklarının biraz daha detayına gireyim. 
 Öncelikle sitemize üye olmak isteyen bir kişi hangi üyelik paketini seçmek istediğini belirtir. Sistemimizdeki üyelik paketlerimiz şunlardır:
@@ -89,7 +89,7 @@ Teslimat günü kurye yola çıktığında, ilgili müşterilerimize SMS atılar
 Filmler yola çıktığında müşterinin listesinden otomatik olarak çıkartılır.
 
  
- #  Satın Alma Sorumlusu Namık Tüzkemiş
+### Satın Alma Sorumlusu Namık Tüzkemiş
 
 Biliyorsunuz ki film kiralamak illegal bir iştir. Çünkü filmi dağıtma, kiralama ve satma yetkileri filmi yurtdışından getiren toptancılara aittir. İşte biz Tiglon,Palermo gibi bu firmalarla anlaşarak kiralama yetkilerini satın alıyoruz. Tabi ki filmleri de bu toptancılardan almamız gerekiyor. Kendileri ile konuştuk, bize aylık olarak bu şirketlerden bize yeni getirdikleri filmlerin bir listesini gönderecekler. Biz de içlerinden şeçerek bu filmlerden satın alacağız. Ancak yeni ürünleri, satın almasak dahi sisteme girilmeli çünkü ilerleyen zamanlarda bizde olmayan filmleri listeleyip satın alabiliriz. 
 
@@ -97,9 +97,9 @@ Sadece yeni gelen filmleri değil, aynı zamanda kullanıcıların elinde bozulm
 
 Kullanıcılar eğer filmleri kiralamak değil de satın almak isterlerse satın almak istedikleri film bana mail olarak gelmeli ve ben de siparişini geçebilmeliyim.
 
-	Benim işim sadece bu kadar. Bu satın alımlardaki parasal işlemleri muhasebecimizden öğrenebilirsiniz.
+Benim işim sadece bu kadar. Bu satın alımlardaki parasal işlemleri muhasebecimizden öğrenebilirsiniz.
 
- # Film Dataları Sorumlusu, Necla Parmaklarıince
+### Film Dataları Sorumlusu, Necla Parmaklarıince
 
 Tedarikçiden elimize ulaşan filmlerin, belirli bir düzen içinde testlere tabi tutulup, sisteme eklenmesi işlerini ben yürüteceğim. İşimin daha etkin olabilmesi için en hızlı ve doğru bir şekilde tüm filmleri test etmek ve bunların sistem için gerekli tüm bilgilerini kayıt etmem gerekiyor. Bir filmle ilgili gireceğim veriler şunlar olacaktır:
 
@@ -133,7 +133,7 @@ Başka eklenecek olan linkler için “Editörün Seçtikleri” ve “Yeni Çı
 Bunların dışında ben istediğim filmleri “Editörün Seçtikleri”  ve “Yeni Çıkanlar” kategorisine ekleyip, çıkartabilmeliyim. Bu iki kategorinin özelliği de anasayfada çıkmalarıdır.
 
 
-# Depo Sorumlusu, Muhittin ASAYİŞ
+### Depo Sorumlusu, Muhittin ASAYİŞ
 
 Benim görevim müşteriden gelen filmleri raflara yerleştirmek, hatalı olanları ayıklamak ve ertesi günün teslimatlarını hazırlamak olacaktır.
 Akşam bütün filmler kuryeler tarafından iade edilir. Ben ve ekibim tek tek zarfları kontrol edip üzerinde “Hatalı/Bozuk” ibaresi işaretlenmiş zarfları test etmek üzere bir kenara ayırırız. Sonra geri kalan filmleri raflarına koyarız. Test ettiğimizde gerçekten bozuksa bunu sisteme gireriz, eğer değilse onları raflarına koyarız.
