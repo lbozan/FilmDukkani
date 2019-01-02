@@ -1,6 +1,8 @@
 # FİLM DÜKKÂNI
 
-Bilge Adam Proje Bitirme Ödevi.
+Bilge Adam Bitirme Projesi.
+
+
 ## (Senaryo)
 
 ### Genel Anlatım  :
